@@ -1,0 +1,127 @@
+1.When state changes, our whole component is quickly refreshed, but it doesnt mean 
+everything in that component is repainted in the screen
+So, when state chnges, component is refreshed, console.log if added inside component,
+will be printed,
+meanwhile triggered reconciliation process will check for difference in previous and
+current DOM structure and repaints only that node
+
+2.What is Monolith and Microservice architecture?
+->In Monolith architechture UI, API, SMS sending app, notifications app, authentication etc,
+everything would be in one app, and everything was built together and deployed as a whole single project.
+If there was one small change in one button, we should have built everything all over again and deploy it
+->In Microservice architechture, UI is a different app, SMS sending is done by different app,
+notification is managed by different app, authentication by other app, 
+and they can be developed and maintained and deployed separately
+
+3.Separation of Concern: Every single microservice have their own work to do,
+without worrying about other microservices
+
+4.All these microservices can be built on different technology
+
+5.Food ordering app we are building is a UI microservice
+
+6.How these aplication can work together?
+All these different applications are deployed in different ports with same domain
+
+7.fetch() : available through JS engine's window object
+This function is used to call api
+
+8.Where do I call my api?
+Calling an api inside the component will lead to fetching of that api everytime the component renders
+
+9.Two ways in which we can load api data: example
+i)When the user loads the page -> call the api and get the data(300ms) -> render the page(500ms)
+ii)When the user loads the page -> show some UI(100ms) -> make api call and get the data(300ms) -> update the UI
+with data from api(500ms)
+Second approach of calling api serves us better in providing the user with fast page load experience
+
+10.How can we implement this second approach in React?
+->useEffect Hook - named import from React,
+useEffect is a function, takes callback function as argument to it
+useEffect(() => {api call}, []) -> args are callback ftn and dependency array
+If you dont want useEffect to be executed on every state or prop change,
+use dependency array to make changes to the behaviour of useEffect
+
+11.[] -> useEffect is called just once since its not dependent on anything(state)
+Will be called after first render.
+[searchText] -> useEffect is called once after initial render,
+everytime after rerender for searchText change
+
+12.On trying to incorporate api call we see this error in browser:
+Access to fetch at 'https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.6235274&lng=74.6917418&page_type=DESKTOP_WEB_LISTING' 
+from origin 'http://localhost:1234' has been blocked by 
+CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+If an opaque response serves your needs,
+set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+->This is our browser blocking us from getting data from swiggy's api from our localhost
+by reminding us about CORS policy 
+So this can be avoided by adding Chrome CORS extension and toggle it on when required.
+
+13.Optional chaining is must (when there is data fetched from api) with long nesting
+
+14.Optional chaining for array items?? -> cards[2]??
+->const user = {
+  name: 'Joe',
+  age: 27,
+  settings: {
+    theme: {
+      mode: 'dark',
+      text: '#d7e0ff',
+      background: '#f87070',
+      font: 'Kumbh Sans, sans-serif'
+    },
+  },
+  friends: ['Brandon', 'Brian', 'Isaac'],
+}
+const firstArrayValue = user?.friends?.[0]
+Ref : https://dev.to/joelynn/optional-chaining-objects-arrays-2mjk
+
+15.Two things observed:
+occational .map undefined -> could be because of async data -> handle the error for api call.
+fluctuation in cards rendered -> sometimes -> also could be because of async data??
+
+16.Debugger mode for your code in browser:
+Shows that the component is loaded with initial data first and then loads with api data
+->Put debug points at <></>, and getRestaurants() inside useEffect
+->Run and see the flow for each following steps:
+->1)render() is executed -> which displays "Not Rendered" from html
+->2)getRestaurants() is executed, no api call, UI will have initial restaurants value structure
+->3)render() is called, renders initial restaurants values, api call is completed but not yet reflected on UI
+->4)getRestaurants() is executed, api call's data structure is loaded
+->5)render() is called, properly renders api's data on UI
+
+17.Error handling for api data??
+->Include the fetch call in try block and get the error and use as er your need in catch block to
+indicate user on the specific error
+Ref : https://web.dev/fetch-api-error-handling/
+
+18.Shimmer : used to improve UX
+Ref: https://tyler-technologies.github.io/design-guide-gallery/shimmer
+Looks like layout of the actual content that is about to load.
+
+19.Early return: 
+if(!allRestaurants) return null;
+
+20.{} can have any piece of JS code, provided its a JS expression
+((a=10), console.log(a)) instead of writing
+a=10;
+console.log(a);
+
+21.React's diff algorithm is in React lib not React DOM
+
+22.Why do we do data.json() after fetch?
+Ref Assignment
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,96 @@
+1.What is Microservice?
+->Is an architectural style that structures an application as a collection of services that are -
+Independently deployable
+Loosly coupled
+Organized around business capabilities
+Owned by small teams
+Highly maintainable and testable
+
+------------------------------------------------------------------------------------------------------------------
+
+2.What is Monolith architechture?
+->Monolith architechture is like a big container, where in all the software components of an app
+assembled and tightly coupled, i.e each component is fully dependent on each other
+
+------------------------------------------------------------------------------------------------------------------ 
+
+3.What is the difference between Monolith and Microservvice?
+->In Monolith architechture UI, API, SMS sending app, notifications app, authentication etc,
+everything would be in one app, and everything was built together and deployed as a whole single project.
+If there was one small change in one button, we should have built everything all over again and deploy it
+->In Microservice architechture, UI is a different app, SMS sending is done by different app,
+notification is managed by different app, authentication by other app, 
+and they can be developed and maintained and deployed separately
+Ref: https://www.atlassian.com/microservices/microservices-architecture/microservices-vs-monolith#:~:text=A%20monolithic%20application%20is%20built,of%20smaller%2C%20independently%20deployable%20services.
+
+------------------------------------------------------------------------------------------------------------------
+
+4.Why do we need a useEffect Hook?
+->We need it because it allows us to perform some side effects in our components,
+like fetching data, timer.
+
+------------------------------------------------------------------------------------------------------------------
+
+5.What is Optional chaining?
+->Ref : chapter-04 class notes
+
+------------------------------------------------------------------------------------------------------------------
+
+6.What is Shimmer UI?
+->Shimmer : used to improve UX
+Ref: https://tyler-technologies.github.io/design-guide-gallery/shimmer
+Looks like layout of the actual content that is about to load.
+
+------------------------------------------------------------------------------------------------------------------
+
+7.What is the difference between JS expression and JS statement?
+->JS expression is any piece of code that resolves to single value
+JS statement is any piece of code that does some action
+Eg: 
+//JS statements
+let x=0;
+function add(a,b) { return a+b };
+if (true) { console.log(Hi); }
+//JS expressions
+x; // resolves to 0
+3+x; // resolves to 3
+add(1,2); / resolves to 3
+Ref : https://www.30secondsofcode.org/articles/s/javascript-expression-statement
+
+------------------------------------------------------------------------------------------------------------------
+
+8.What is conditional rendering? Explain with code example.
+->In React, we can create multiple components which encapsulate behavior that we need.
+After that, we can render them depending on some conditions or the state of our application.
+In other words, based on one or several conditions, 
+a component decides which elements it will return.
+Example: 
+function SignUp(props) {  
+  const isLoggedIn = props.isLoggedIn;  
+  if (isLoggedIn) {  
+    return <UserLogin />;  
+  }  
+  return <GuestLogin />;  
+} 
+Here depending on isLoggedIn, what is to be rendered by the component is decided
+i.e either <UserLogin/> or <GuestLogin/>
+
+------------------------------------------------------------------------------------------------------------------
+
+9.What is CORS?
+->Ref : chapter-01 notes and assignment
+
+------------------------------------------------------------------------------------------------------------------
+
+10.What is async and await?
+->The async function declaration declares an async function 
+where the await keyword is permitted within the function body
+
+------------------------------------------------------------------------------------------------------------------
+
+11.What is the use of 'const json = await data.json();' in getRestaurants()?
+->The fetch() method returns a Promise representing the server's response,
+and the response.json() resolves to the result of parsing the JSON response into a JavaScript object
+Ref : https://reqbin.com/code/javascript/wc3qbk0b/javascript-fetch-json-example#:~:text=To%20fetch%20JSON%20from%20the,resolves%20with%20a%20JSON%20object.
+
+------------------------------------------------------------------------------------------------------------------
